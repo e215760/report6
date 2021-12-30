@@ -1,21 +1,27 @@
 package jp.ac.uryukyu.ie.e215760;
 public class Main {
     public static void main(String[] args){
-        int xSize = 10;
-        int ySize = 10;
+        int xSize = 2;
+        int ySize = 7;
 
         Board board1 = new Board(xSize,ySize);
         Stone black = new Black();
         Stone white = new White();
-        board1.createBorad();
+
+        board1.createBoard();
+
         int i = 0;
-        while( i <= 9){
-            System.out.printf("No. %d ",i);
+        while( white.win && black.win){
+            System.out.printf("\nTurn No. %d ",i+1);
             System.out.println();
-            board1.placeStone(white.name);
-            board1.placeStone(black.name);
             i++;
-            board1.printBorad();
+            white.placeStoneEx(board1, xSize, ySize);
+            black.placeStoneEx(board1, xSize, ySize);
+            board1.printBoard();
+            if (i == 7){
+                white.win = false;
+                System.out.println("white Win?");
+            }
         }
         System.out.println("END");
     }
