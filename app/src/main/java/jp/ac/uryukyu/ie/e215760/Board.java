@@ -5,6 +5,8 @@ package jp.ac.uryukyu.ie.e215760;
  */
 public class Board {
     int[][] board;
+    boolean gameEnd = false;
+
     public Board(int _x,int _y){
         this.board = new int[_y][_x];
     }
@@ -25,9 +27,9 @@ public class Board {
      * "2" = black
      */
     public void printBoard(){
-        for(int x = 0; x < board.length; x++){
-            for(int y = 0; y < board[x].length; y++){
-                switch(board[x][y]){
+        for(int y = 0; y < board.length; y++){
+            for(int x = 0; x < board[y].length; x++){
+                switch(board[y][x]){
                     case 0 :
                         System.out.printf(" *");
                         break;
@@ -47,33 +49,22 @@ public class Board {
          * 돌을 보드에 놓는 매소드.
          * @param name
          */
-    public void placeStone(int name, int coordX ,int coordY){ 
-            if (board[coordY][coordX] == 0){
-                board[coordY][coordX] = name;
-            }
-            else{
-                System.out.println(" --- " + name + " is reTry ---");
-                int reCoordX = (int)(Math.random() * board.length);
-                int reCoordY = (int)(Math.random() * board.length); 
-                placeStone(name, reCoordX , reCoordY);
-            }
-    }
 
-    public void checkWin(){
+    public void check(Stone stone){
         for(int y =0; y < board.length ; y++){
             for(int x=0; x< board[y].length ; x++){
                 if(board[y][x] != 0 ){
                     int count = 0;
-                    int check = board[y][x];
+                    int check = stone.name;
                     //->
                     try{
                         for (int as = 0 ; as <5; as++){
-                            if(board[y][x+as] == check){
+                            if(board[y][x+as] == stone.name){
                                 count ++;
                                 if(count ==5){
-                                    System.out.println("-> y = " + (y+1) + " x = " + (x+1));
-                                    System.out.println("player"+check+" is win");
-                                    System.exit(0);
+                                    System.out.println("-> x = " + (x+1) + " y = " + (y+1));
+                                    gameEnd = true;
+                                    stone.win = true;
                                 }
                             }
                         }
@@ -86,9 +77,9 @@ public class Board {
                             if(board[y+as][x] == check){
                                 count ++;
                                 if(count ==5){
-                                    System.out.println("↓ y = " + (y+1) + " x = " + (x+1));
-                                    System.out.println("player"+check+" is win");
-                                    System.exit(0);
+                                    System.out.println("↓ x = " + (x+1) + " y = " + (y+1));
+                                    gameEnd = true;
+                                    stone.win = true;
                                 }
                             }
                         }
@@ -101,9 +92,9 @@ public class Board {
                             if(board[y+as][x+as] == check){
                                 count ++;
                                 if(count ==5){
-                                    System.out.println("⇨↓ y = " + (y+1) + " x = " + (x+1));
-                                    System.out.println("player"+check+" is win");
-                                    System.exit(0);
+                                    System.out.println("⇨↓ x = " + (x+1) + " y = " + (y+1));
+                                    gameEnd = true;
+                                    stone.win = true;
                                 }
                             }
                         }
@@ -116,9 +107,9 @@ public class Board {
                             if(board[y+as][x-as] == check){
                                 count ++;
                                 if(count ==5){
-                                    System.out.println("←↓ y = " + (y+1) + " x = " + (x+1));
-                                    System.out.println("←↓ player"+check+" is win");
-                                    System.exit(0);
+                                    System.out.println("←↓ x = " + (x+1) + " y = " + (y+1));
+                                    gameEnd = true;
+                                    stone.win = true;
                                 }
                             }
                         }
@@ -128,6 +119,21 @@ public class Board {
             }
         }
     }
+
+    public void isWin(Stone stone){
+        if (this.gameEnd == true){
+            if(stone.name == 1){
+                System.out.println("White is Win!");
+                System.exit(0);
+            }
+            else{
+                System.out.println("Black is Win");
+                System.exit(0);
+            }
+        }
+
+        }
+        
 }
 
 

@@ -1,13 +1,13 @@
 package jp.ac.uryukyu.ie.e215760;
 
 
-public class Stone {
+public class Stone{
     int name;
     boolean win;
     
     public Stone(){
         this.name = 0;
-        this.win = true;
+        this.win = false;
     }
 
     public void placeStoneEx(Board _board, int xSize, int ySize){
@@ -17,13 +17,7 @@ public class Stone {
             _board.board[y][x] = 0;
         }
         else{
-            System.out.println(" ---- "+ name + " is retry ----");
             placeStoneEx(_board, xSize, ySize);
         }
-    }
-
-    public void isWin(Board _board){
-        System.out.println(name + "_board" + _board);
-        
     }
 }

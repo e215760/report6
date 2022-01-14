@@ -12,22 +12,22 @@ public class Main {
         board1.createBoard();
 
         int i = 0;
-        
+
         while( i < maximumturn){
             System.out.printf("\nTurn No. %d \n",i+1);
             i++;
             white.placeStoneEx(board1, xSize, ySize);
             board1.printBoard();
-            board1.checkWin();
+            board1.check(white);
+            board1.isWin(white);
             black.placeStoneEx(board1, xSize, ySize);
             board1.printBoard();
-            board1.checkWin();
+            board1.check(black);
+            board1.isWin(black);
         }
-        System.out.println("END");
-        System.out.println(maximumturn);
-        
+        System.out.println("Draw");
+
     }
 
-    
     
 }
