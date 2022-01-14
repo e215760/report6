@@ -1,8 +1,8 @@
 package jp.ac.uryukyu.ie.e215760;
 public class Main {
     public static void main(String[] args){
-        int xSize = 8;
-        int ySize = 8;
+        int xSize = 10;
+        int ySize = 10;
         int maximumturn = xSize*ySize/2;
 
         Board board1 = new Board(xSize,ySize);
@@ -14,8 +14,7 @@ public class Main {
         int i = 0;
         
         while( i < maximumturn){
-            System.out.printf("\nTurn No. %d ",i+1);
-            System.out.println();
+            System.out.printf("\nTurn No. %d \n",i+1);
             i++;
             white.placeStoneEx(board1, xSize, ySize);
             board1.printBoard();
