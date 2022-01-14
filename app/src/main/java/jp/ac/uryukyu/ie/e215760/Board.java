@@ -13,7 +13,6 @@ public class Board {
      */
     public void createBoard(){
         for(int i=0 ; i < board.length; i++){
-            
             for(int j = 0; j< board[i].length; j++){
                 board[i][j] = 0;
             }
@@ -61,8 +60,88 @@ public class Board {
     }
 
     public void checkWin(){
-        
-    }
+        for(int y =0; y < board.length ; y++){
+            for(int x=0; x< board[y].length ; x++){
+                System.out.println("->" + (y)+ "< y  x >" + (x));
+               // System.out.println(board.length + "  "+ board[y].length);
+                if(board[y][x] != 0 ){
+                    int count = 0;
+                    int check = board[y][x];
+                    //->
+                    try{
+                        for (int as = 0 ; as <5; as++){
+                            
+                            if(board[y][x+as] == check){
+                                count ++;
+                                if(count ==5){
+                                    System.out.println("-> y = " + (y+1) + " x = " + (x+1));
+                                    System.out.println("player"+check+" is win");
+                                    
+                                    System.exit(0);
+                                }
+                            }
+                        }
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        break;
+                    }
+                    count = 0;
 
+                    //↓
+                    try{
+                        for (int as = 0 ; as <5; as++){
+                            if(board[y+as][x] == check){
+                                count ++;
+                                if(count ==5){
+                                    System.out.println("↓ y = " + (y+1) + " x = " + (x+1));
+                                    System.out.println("player"+check+" is win");
+                                    System.exit(0);
+                                }
+                            }
+                        }
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        break;
+                    }
+                    count = 0;
+
+                    //⇨↓
+                    try{
+                        for (int as = 0 ; as <5; as++){
+                            if(board[y+as][x+as] == check){
+                                count ++;
+                                if(count ==5){
+                                    System.out.println("⇨↓ y = " + (y+1) + " x = " + (x+1));
+                                    System.out.println("player"+check+" is win");
+                                    System.exit(0);
+                                }
+                            }
+                        }
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        break;
+                    }
+                    count = 0;
+
+                    //←↓
+                    try{
+                        for (int as = 0 ; as <5; as++){
+                            if(board[y-as][x-as] == check){
+                                //System.out.println((y-as)+ "<y  x>" + (x-as));
+                                count ++;
+                                if(count ==5){
+                                    System.out.println("←↓ y = " + (y+1) + " x = " + (x+1));
+                                    System.out.println("player"+check+" is win");
+                                    System.exit(0);
+                                }
+                            }
+                        }
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        break;
+                    }
+                }   
+            }
+        }
+    }
 }
+
+
+
 

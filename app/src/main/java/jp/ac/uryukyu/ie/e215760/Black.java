@@ -5,6 +5,7 @@ public class Black extends Stone{
     public Black(){
         this.name = 2;
     }
+    
     @Override
     public void placeStoneEx(Board _board,int xSize, int ySize) {
         int x = (int)(Math.random() * xSize);
@@ -13,7 +14,6 @@ public class Black extends Stone{
             _board.board[y][x] = 2;
         }
         else{
-            System.out.println(" ---- "+ name + " is retry ----");
             placeStoneEx(_board, xSize, ySize);
         }
     }
