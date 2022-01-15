@@ -1,17 +1,24 @@
 package jp.ac.uryukyu.ie.e215760;
 /**
- * 보드 클라스
- * int[][] board는 보드의 상태
+ * Boardクラス。
+ * int[][] board; ボードの状況。
+ * boolean gameEnd; ゲームが終わったかを確認。　true　= ゲーム終了。
  */
 public class Board {
     int[][] board;
     boolean gameEnd = false;
 
+    /**
+     * コンストラクター。ボードのx軸とy軸を設定。
+     * @param _x x軸の最大値。
+     * @param _y y軸の最大値。
+     */
     public Board(int _x,int _y){
         this.board = new int[_y][_x];
     }
+
     /**
-     *  보드를 초기화 시켜준다.
+     *  ボードの大きさによって全てのマスを０に初期化する。
      */
     public void createBoard(){
         for(int i=0 ; i < board.length; i++){
@@ -20,8 +27,9 @@ public class Board {
             }
         }
     }
+
     /**
-     * 현재 보드의 상태를 보여주는 매소드.
+     * 現在ボードの状況を出力してくれるメソッド。
      * "0" = null
      * "1" = white
      * "2" = black
@@ -45,11 +53,11 @@ public class Board {
             }
             System.out.println();
         }
-        /**
-         * 돌을 보드에 놓는 매소드.
-         * @param name
-         */
-
+        
+    /**
+     * ゲームの終わりの確認と誰が優勝したのかを確認。
+     * @param stone　確認するプレイヤーの情報。
+     */
     public void check(Stone stone){
         for(int y =0; y < board.length ; y++){
             for(int x=0; x< board[y].length ; x++){
@@ -120,6 +128,11 @@ public class Board {
         }
     }
 
+    /**
+     * 勝者を確認し、ゲームを終了してくれるメソッド。
+     * @param stone　確認するプレイヤーの情報。
+     * 
+     */
     public void isWin(Stone stone){
         if (this.gameEnd == true){
             if(stone.name == 1){
@@ -132,7 +145,7 @@ public class Board {
             }
         }
 
-        }
+    }
         
 }
 

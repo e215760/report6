@@ -1,7 +1,18 @@
 package jp.ac.uryukyu.ie.e215760;
 
+/**
+* 白の碁石のクラス
+* nameは
+* "0" = null
+* "1" = white
+* "2" = black
+* winの初期値はfalse;
+*/
 public class White extends Stone{
-    //white = 1
+    /**
+     * コンストラクタ。
+     * Whiteで生成すると名前が1になる。
+     */
     public White(){
         this.name = 1;
     }

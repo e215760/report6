@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class AppTest {
 
+    /**
+     * 碁石が任意のマスに置かれて行き、結局５つ並べたらwhiteのwinをtrueにすることをテストする。
+     */
     @Test
     void placeStoneTest(){
         int xSize = 5;
@@ -19,8 +22,13 @@ public class AppTest {
         }
         assertEquals(true, white.win);
 
-        }
-    
+    }
+
+
+    /**
+     * 以下は碁石が5つ並べる形を強制的に作って形ごとに確認する。
+     * ->形。
+     */
     @Test
     void winTestRight(){
         int xSize = 5;
@@ -39,6 +47,10 @@ public class AppTest {
 
     }
 
+    /**
+     * 以下は碁石が5つ並べる形を強制的に作って形ごとに確認する。
+     * ↓形。
+     */
     @Test
     void winTestDown(){
         int xSize = 5;
@@ -57,6 +69,10 @@ public class AppTest {
 
     }
 
+    /**
+     * 以下は碁石が5つ並べる形を強制的に作って形ごとに確認する。
+     * ⇨↓形。
+     */
     @Test
     void winTestRightDown(){
         int xSize = 5;
@@ -75,6 +91,10 @@ public class AppTest {
 
     }
 
+    /**
+     * 以下は碁石が5つ並べる形を強制的に作って形ごとに確認する。
+     * ←↓形。
+     */
     @Test
     void winTestLeftDown(){
         int xSize = 5;
