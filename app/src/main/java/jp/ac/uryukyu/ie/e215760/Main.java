@@ -1,4 +1,5 @@
 package jp.ac.uryukyu.ie.e215760;
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args){
         int xSize = 10;
@@ -6,24 +7,25 @@ public class Main {
         int maximumturn = xSize*ySize/2;
 
         Board board1 = new Board(xSize,ySize);
-        Stone black = new Black();
         Stone white = new White();
-
+        Stone black = new Black();
+        ArrayList<Stone> order = new ArrayList<>();
+        order.add(white);
+        order.add(black);
+        
         board1.createBoard();
 
         int i = 0;
 
         while( i < maximumturn){
-            System.out.printf("\nTurn No. %d \n",i+1);
             i++;
-            white.placeStoneEx(board1, xSize, ySize);
-            board1.printBoard();
-            board1.check(white);
-            board1.isWin(white);
-            black.placeStoneEx(board1, xSize, ySize);
-            board1.printBoard();
-            board1.check(black);
-            board1.isWin(black);
+            for( var playGame : order){
+                playGame.placeStoneEx(board1, xSize, ySize);
+                board1.printBoard();
+                board1.check(playGame);
+                board1.isWin(playGame);
+            }
+
         }
         System.out.println("Draw");
 
